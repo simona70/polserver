@@ -69,7 +69,8 @@ jobs:
       - name: Build with cov-build
         run: |
           cd bin-build
-          cov-configure --gcc
+          cov-configure --template --comptype gcc --compiler g++
+          #cov-configure --gcc
           cmake ..
           cov-build --dir cov-int make -j 2
 
