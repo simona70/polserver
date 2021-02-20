@@ -69,7 +69,6 @@ jobs:
       - name: Build with cov-build
         run: |
           cd bin-build
-          cov-configure --list-compiler-types
           cov-configure --template --comptype gcc --compiler gcc
           #cov-configure --gcc
           cmake ..
@@ -79,13 +78,13 @@ jobs:
         run: |
           cd bin-build
           tar czvf polserver.tgz cov-int
-#          curl \
-#            --form token=$TOKEN \
-#            --form email=polteam@polserver.com \
-#            --form file=@polserver.tgz \
-#            --form version=master \
-#            --form description="polcore100" \
-#            https://scan.coverity.com/builds?project=polserver%2Fpolserver
+          curl \
+            --form token=$TOKEN \
+            --form email=polteam@polserver.com \
+            --form file=@polserver.tgz \
+            --form version=master \
+            --form description="polcore100" \
+            https://scan.coverity.com/builds?project=polserver%2Fpolserver
         env:
           TOKEN: ${{ secrets.COVERITY_SCAN_TOKEN }}
       - name: Upload Artefact
