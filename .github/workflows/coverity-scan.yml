@@ -58,7 +58,7 @@ jobs:
       - name: Build 3rd party libs
         run: |
           cd bin-build
-          cmake .. -DNO_PCH=0 
+          cmake .. -DNO_PCH=1 
           cmake --build . --target libcurl
           cmake --build . --target libantlr_ex
           cmake --build . --target boost
